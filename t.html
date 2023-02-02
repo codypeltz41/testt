@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Celsius to Fahrenheit Converter</title>
+</head>
+<body>
+  <div id="temp-converter-container"></div>
+
+  <script>
+    (function () {
+      var tempConverterContainer = document.querySelector('#temp-converter-container');
+
+      function createTempConverter() {
+        var tempConverter = document.createElement('div');
+        tempConverter.innerHTML = '<p>Enter temperature in Celsius: <input type="text" id="celsius"></p>' +
+                                  '<p>Temperature in Fahrenheit: <span id="fahrenheit"></span></p>';
+
+        var celsiusInput = tempConverter.querySelector('#celsius');
+        var fahrenheitDisplay = tempConverter.querySelector('#fahrenheit');
+
+        function updateFahrenheit() {
+          var celsius = celsiusInput.value;
+          var fahrenheit = (celsius * 9 / 5) + 32;
+          fahrenheitDisplay.textContent = fahrenheit.toFixed(2);
+        }
+
+        celsiusInput.addEventListener('input', updateFahrenheit);
+        return tempConverter;
+      }
+
+      tempConverterContainer.appendChild(createTempConverter());
+    })();
+  </script>
+</body>
+</html>
